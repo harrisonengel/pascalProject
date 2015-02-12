@@ -1,2 +1,2 @@
-# paschalProject
-Harrison and Rebecca's paschal project for PLC.
+# pascalProject
+Harrison and Rebecca's pascal project for PLC.
