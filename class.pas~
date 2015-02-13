@@ -1,0 +1,32 @@
+program class
+
+type str 30 = packed array[1..30] of char;
+   dateRec  = record
+		 day   : integer;
+		 month : str30;
+		 year  : integer;
+	      end;     
+   personT   = record	
+		 firstName : str30;
+		 lastName  : str30;
+		 date	   : dateRec;
+		 age	   : real;
+		 address   : String;
+	      end;	   
+   pNodeptr = ^pNode;
+   pNode    = record
+		 person	 : personT;
+		 nodePtr :  pNodeptr;
+	      end;
+   
+var personList : personT;
+    head, tail  :  pNodeptr;
+
+procedure initLL
+begin
+   head := nil;
+   tail := head;
+end; { initLL }
+
+procedure 
+   
