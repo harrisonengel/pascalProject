@@ -1,0 +1,55 @@
+I Henry SHIPMAN          02 Nov 1826 39.0 Little Carter Lane          
+I James JACKSON          19 May 1822 0.10 Friday Street               
+I Hannah ROGERS          10 Nov 1824 5.0  Knight Rider's Court        
+I Charles LEE            16 Mar 1828 0.13 Sermon Lane                 
+I Hannah LEE             21 Apr 1844 53   Sermon Lane                 
+I Hannah LEE             30 May 1852 22.0 17,Sermon Lane              
+I Samuel LEE             26 Jul 1834 5.9  Sermon Lane                 
+I Sarah ANSELL           31 May 1829 29.0 HSt Peters Hill             
+I Mary TAYLOR            23 Jan 1814 22.0 Knight Rider Court          
+I William TYRRELL        25 Dec 1822 0.2  Lambeth Hill                
+I Sarah WELCH            23 Feb 1840 20.0 Old Fish Street             
+P
+I Edward ANGEL           20 Nov 1842 22.0 Crane Court Lambeth Hill    
+I Mary CHAMBERS          21 Nov 1830 70.0 Lambeth Hill                      
+D Charles LEE 16 Mar 1828
+I Frederick DILLAY       04 May 1834 2.0  Little Carter Lane          
+I Richard DILLEY         26 Jan 1837 46.0 Little Carter Lane          
+D Hannah LEE 30 May 1852
+I Eliza GOODALL          06 Apr 1845 28.0 Little Carter Lane           
+I Clara HANDLEY          19 Nov 1845 1.0  Lambeth Hill                              
+I John HARRIS            02 Jul 1837 62.0 Lambeth Hill                
+I John BOWLES            17 Aug 1817 22.0 Green Arbour Court           
+D Marie CHAMBERS 21 Nov 1830
+I Mary BOWLES            09 May 1838 33.0 Green Arbour Court           
+I Edward MARTIN          09 Aug 1825 49.0 Lambeth Hill                
+P 1824
+I Elizabeth NOTLEY       28 Jan 1819 5.0  Upper Thames Street          
+I Sarah PHILLIPS         26 Oct 1834 59.0 Lambeth Hill                
+I Susan PHILLIPS         06 Jan 1828 61.0 Lambeth Hill                
+C Susan PHILLIPS 06 Jan 1828 D 08
+I William PHILLIPS       22 Feb 1829 66.0 Crane Court Lambeth Hill   
+D John HARRIS 02 Jul 1837
+I William RADFORD        13 Feb 1826 57.0 St Peters Hill                      
+C Edward ANGEL 20 Nov 1842 M Dec
+C Edward ANGEL 20 Dec 1842 D 25
+C Edward ANGEL 25 Dec 1843 Y 1844
+I John ALLARDYCE         17 Mar 1844 2.9  Little Knight Ryder Street 
+I Elizabeth WILD         22 Dec 1835 23.0 Lambeth Hill               
+I Mary WISE              25 Jan 1820 44.0 Lambeth Hill               
+C Mary WISE 25 Jan 1820 Y 1810
+I George YOUNG           11 May 1845 73.0 Peter's Hill              
+D Henry SHIPMAN 02 Nov 1826
+I George FLANDERS        16 Aug 1837 0.3  St Peters Hill            
+I Louisa FLANDERS        25 Jun 1839 9.3  St Peters Hill            
+I William FLANDERS       19 May 1833 2.6  St Peters Hill            
+P 1837
+C Louisa FLANDERS 25 Jun 1839 M JUL
+D Charles LEE 16 Mar 1828
+I Elizabeth BIRCH        09 Aug 1829 58.0 Lambeth Hill             
+I Elizabeth BIRCH        07 Jul 1832 0.1  Lambeth Hill             
+D George YOUNG 11 May 1845
+D John HARRIS 02 Jul 1836
+I Mary BEAUMONT          15 Dec 1813 27.0 Old Change               
+I Thomas BEAUMONT        08 Jun 1833 0.4  Knowles Court             
+P
