@@ -3,26 +3,41 @@ program Lab2(input, output);
 type str30 = packed array [1..30] of char;
    
 var data	       : TextFile;
-   func, ch, deleteWhat : char;
-   i, day, year	       : integer;
-   firstName, LastName, month  : str30;
+   func, ch, changeWhat : char;
+   i, day, year, pos, newDay, newYear    : integer;
+   firstName, LastName, month, newMonth  : str30;
    age		       : real;
    address	       : String;
 
 begin
    assign(data, 'Lab2.txt');
    reset(data);
+ while not eof(data) do
+ begin
    read(data,func);
-   
-   (*reads in first an last name, and DOB if I, D, or C*)
-   if(func = 'I' OR func = 'D' OR func = 'C') then
-      (*to account for space there*)
-      read(data, ch);
 
-      (*read in first letter of first name*)
+   if(func = 'P') then
+   begin
+      if(EOLn(data)) then
+      begin
+	 writeln('Print all function');
+	 readln(data);
+      end
+      else
+      begin
+	 readln(data, year);
+	 writeln('Print year function');
+      end
+         
+   end
+    
+   (*reads in first an last name, and DOB if I, D, or C*)
+   else
+   begin
+      read(data, ch);
       read(data, ch); 
+
       i := 1;
-      (*get first name characters until it hits a space*)
       while(ch <> ' ')
           do begin
            firstname[i] := ch;
@@ -30,11 +45,10 @@ begin
            i := i + 1;
 	  end;
    
-      (*to account for space*)
+
       read(data, ch);
 
       i:= 1;
-      (*get last name characters until it hits a space*)
       while(ch <> ' ')
          do begin
 	    lastName[i] := ch;
@@ -42,73 +56,61 @@ begin
 	    i := i + 1;
 	 end;
    
-     (*read in day*)
      read(data, day);
-   
-     (*to account for space*)
+     read(data, ch);
      read(data, ch);
 
-     (*read in first character of month*)
-     read(data, ch);
      i := 1;
-     (*get month characters until it hits a space*)
      while(ch <> ' ')
 	  do begin
       	     month[i] := ch;
 	     read(data, ch);
 	     i := i + 1;
 	  end;
-
-    (*read in year*)
+    
     read(data, year);
+          
     if(func = 'I') then
-       (*read in age*)
+    begin
        read(data, age);
-
-       (*read in address*)
        readln(data, address);
-
-       (*insert function*)
-       write('Insert');
-   
+       writeln('Insert');
+    end
+      
     else if(func = 'C')then
-       (*read in what to change*)
-       read(data, deleteWhat);
-       if(deleteWhat = 'M') then
-          (*to account for space*)
+    begin
+       read(data, ch);
+       read(data, changeWhat);
+       if(changeWhat = 'M') then
+       begin
 	  read(data, ch);
-
-         (*read in first character of month*)
           read(data, ch);
-          i := 1;
-         (*get month characters until it hits a space*)
-          while(ch <> ' ')
-	             do begin
-			month[i] := ch;
-			read(data, ch);
-			i := i + 1;
-		     end;
-         (*change month function*) 
-          writeln('Change month');
-   
-       else if(deleteWhat = 'D') then
-          (*read in day*)
-	  read(data, day);
-          (*change day function*)
-          writeln('Change day');
-
-       else
-        (*read in year*)
-         read(data, year);
-        (*change year function*)
-         writeln('Change year');
+	  newMonth[1] := ch;
+          read(data, ch);
+	  newMonth[2] := ch;
+	  readln(data, ch);
+	  newMonth[3] := ch;
+	  writeln('Change month');
+        end
        
-     else
-       (*delete function*)
+        else if(changeWhat = 'D') then
+	begin
+      	     readln(data, newDay);
+	     writeln('Change day');
+         end
+       
+	else
+	begin      
+	   read(data, newYear);
+	   writeln('Change year');
+	   readln(data);
+	end
+    end
+    else
+    begin
        writeln('Delete');
-else
-    Try
-      readln(data, year)
-    Except
-      On
-   end.
+       readln(data);
+     end
+   end; 
+ end;
+ end.
