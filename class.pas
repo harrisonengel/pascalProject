@@ -123,3 +123,39 @@ begin
    end;
 end; { printAll }
 
+procedure changeYear(cFirst, cLast, cMM : str30; cDD, cYY, newYear: integer);
+
+var
+   tempPtr : pNodePtr;
+
+begin
+   tempPtr := find(cfirst, cLast, cMM, cDD, cYY);
+    if(tempPtr <> nil) then
+       tempPtr^.person.date.year := newYear;
+      
+end; { changeYear }
+
+procedure changeMonth(cFirst, cLast, cMM : str30; cDD, cYY; newMonth: str30 );
+
+var
+   tempPtr : pNodePtr;
+
+begin
+   tempPtr := find(cfirst, cLast, cMM, cDD, cYY);
+   if(tempPtr <> nil) then
+	  tempPtr^.person.date.month := newMonth;
+
+end; { changeMonth }
+
+procedure changeDay(cFirst, cLast, cMM : str30; cDD, cYY, newDay: integer );
+
+var
+   tempPtr : pNodePtr;
+  
+begin
+   tempPtr := find(cfirst, cLast, cMM, cDD, cYY);
+   if(tempPtr <> nil) then
+	  tempPtr^.person.date.day := newDay;
+
+end; { changeDay }
+
