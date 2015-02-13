@@ -92,7 +92,7 @@ begin
 	  newMonth[2] := ch;
 	  readln(data, ch);
 	  newMonth[3] := ch;
-	  changeMonth(firstName, lastName, month, day, year, newMonth);
+	  changeMonth(firstName, lastName, month, newMonth, day, year);
         end
        
         else if(changeWhat = 'D') then
@@ -110,7 +110,7 @@ begin
     end
     else
     begin
-       writeln('delete');
+       delete(firstName, lastName, month, day, year);
        readln(data);
      end
    end; 

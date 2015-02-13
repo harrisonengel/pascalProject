@@ -43,7 +43,7 @@ begin
    prevPtr := head;
    tempPtr := head;
 
-   while true do
+   While true do
    begin
       if((CompareStr(tempPtr^.person.last, personVar.last) = 0) AND (CompareStr(tempPtr^.person.first, personVar.first) = 0) AND (tempPtr^.person.date.day = personVar.date.day) AND (tempPtr^.person.date.year =  personVar.date.year)
 	 AND  (CompareStr(tempPtr^.person.date.month, personVar.date.month) = 0)) then
