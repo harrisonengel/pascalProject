@@ -1,12 +1,12 @@
 program Lab2(input, output);
 
-uses personList;
+uses personlist;
 
 type str30 = packed array [1..30] of char;
    
 var data	       : TextFile;
    func, ch, changeWhat : char;
-   i, day, year, pos, newDay, newYear    : integer;
+   i, day, year, newDay, newYear    : integer;
    firstName, LastName, month, newMonth  : str30;
    age		       : real;
    address	       : String;
@@ -14,15 +14,18 @@ var data	       : TextFile;
 begin
    assign(data, 'Lab2.txt');
    reset(data);
+   
+   init();
+   
  while not eof(data) do
  begin
    read(data,func);
-
+  
    if(func = 'P') then
    begin
       if(EOLn(data)) then
       begin
-	 printAll();
+	  {printAll();}
 	 readln(data);
       end
       else

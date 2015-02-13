@@ -25,9 +25,21 @@ type
 		 end;
 
 var
-   head	:  pNodePtr;
+   head	      : pNodePtr;
 
-implementation
+function find(cLast, cFirst, cMM : str30 ; cDD, cYY : integer) : pNodePtr;
+procedure printAll();
+procedure init();
+procedure delete(cFirst, cLast, cMM : str30 ; cDD, cYY : integer );
+procedure printPerson(personVar :   personT);
+procedure printYear (yearVar	:   integer);
+procedure insert(newN :  pNode);
+procedure addPerson(first,last, address, month : str30 ; date,year : integer; age : real);
+procedure changeYear(cFirst, cLast, cMM : str30; cDD, cYY, newYear: integer);
+procedure changeMonth(cFirst, cLast, cMM, newMonth : str30; cDD, cYY : integer);
+procedure changeDay(cFirst, cLast, cMM : str30; cDD, cYY, newDay: integer );
+   
+Implementation
 {***************** Functions ********************}
 
 
@@ -40,13 +52,13 @@ var
    tempPtr, prevPtr : pNodePtr;
 
 begin
-      if(head = nil) then
+   if(head^.NodePtr = NIL) then
       begin
 	 find := NIL;
 	 EXIT;
       end;
-   prevPtr := head;
-   tempPtr := head;
+   prevPtr := @head;
+   tempPtr := prevPtr^.NodePtr;
    
    while (tempPtr <> NIL) do
    begin
@@ -67,12 +79,14 @@ end; { find }
 {********************* PROCEDURES ***********************}
 
 procedure init();
-var
-   headNode : pNodePtr;
+
+   {headNode : pNodePtr;}
    
 begin
-   headNode^.NodePtr := NIL;
-   head := headNode;
+   {*new(headNode.NodePtr);
+   headNode.NodePtr := NIL;
+   headNode.person.last := 'AAAAAAA';*}
+   head := NIL;
 end; {init}
 
 
@@ -83,12 +97,12 @@ var
 
 begin
    prevPtr := find(cFirst, cLast, cMM, cDD, cYY);
-   tempPtr := prevPtr^.nodePtr;
-         if(prevPtr <>  NIL) then
-	 begin
-	    prevPtr^.nodePtr := tempPtr^.nodePtr;
-	    dispose(tempPtr);
-	 end;
+   if (prevPtr <> NIL) then
+      begin
+	 tempPtr := prevPtr^.nodePtr;
+	 prevPtr^.nodePtr := tempPtr^.nodePtr;
+	 dispose(tempPtr);
+      end;
 end;{ delete }
 
 
@@ -96,6 +110,7 @@ end;{ delete }
 
 procedure printPerson(personVar	:  personT);
 begin
+  
    write(personVar.first, ' ');
    write(personVar.last, ' ');
    if(personVar.date.day < 10) then
@@ -104,7 +119,7 @@ begin
       write(personVar.date.day, ' ');
    write(personVar.date.month, ' ');
    write(personVar.date.year, ' ');
-   write(personVar.age, ' ');
+   write(personVar.age : 4:2 , ' ');
    writeln(personVar.address);
 end; { printPerson }
 
@@ -115,8 +130,8 @@ var
    tempPtr :  pNodePtr;
 
 begin
-   tempPtr := head;
-      if(head <> NIL) then
+   tempPtr := @head;
+   if(head^.NodePtr <> NIL) then
       begin
 	 while(tempPtr <>  NIL) do
 	 begin
@@ -133,22 +148,39 @@ procedure insert(newN : pNode);
 to NIL during node creation.*}
 
 var
-   cur, next : ^pNode; { Pointers for finding where to put a Node }
+   cur, next : pNodePtr; { Pointers for finding where to put a Node }
 
 begin
    
-   cur := head;
-   next := head^.NodePtr;
+   if (head = NIL) then
+   begin
+      head := @newN;
+      exit;
+   end;
 
+   writeln('Head is ');
+   printPerson(head^.person);
+
+   cur := head;
+   next := cur^.NodePtr;
+  
    while(next <> NIL) do
    begin
+       if ((CompareStr(cur^.person.last, newN.person.last) < 0) AND (CompareStr(newN.person.last, next^.person.last)<0)) then
+	 break;
       cur := next;
       next := next^.NodePtr;
-      if ((CompareStr(cur^.person.last, newN.person.last) < 0) AND (CompareStr(newN.person.last, next^.person.last)<0)) then
-	     break;
    end;
    cur^.NodePtr := @newN;
    newN.NodePtr := next;
+
+   writeln('Prev Person Is ');
+   printPerson(cur^.person);
+   writeln('Next Person Is ');
+   if (newN.NodePtr <> NIL) then
+      printPerson(newN.NodePtr^.person) 
+   else
+      writeln('NIL');
    
 end;
 
@@ -160,6 +192,7 @@ var
    newD : DateRec;
 
 begin
+
    newP.first := first;
    newP.last := last;
    newP.address := address;
@@ -172,10 +205,29 @@ begin
    newP.age := age;
 
    newNode.person := newP;
-   newNode.nodePtr := NIL;
+   new(newNode.nodePtr);
+   {newNode.nodePtr := NIL;}
+
+   printPerson(newNode.person);
 	  
    insert(newNode);
 end;
+
+{************* PRINT ALL *************}
+procedure printAll();
+var
+   tempPtr :  pNodePtr;
+begin
+   writeln('BEGIN PRINT ALL');
+   tempPtr := head;
+      while(tempPtr <> nil) do
+      begin
+	 writeln('Begin While');
+	 printPerson(tempPtr^.person);
+	 writeln('Print Person');
+	 tempPtr := tempPtr^.nodePtr;
+      end;
+end; { printAll }
 
 {********* CHANGE YEAR *************}
 procedure changeYear(cFirst, cLast, cMM	: str30; cDD, cYY, newYear: integer);
