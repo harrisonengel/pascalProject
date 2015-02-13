@@ -1,5 +1,7 @@
 program Lab2(input, output);
 
+uses personList;
+
 type str30 = packed array [1..30] of char;
    
 var data	       : TextFile;
@@ -20,13 +22,13 @@ begin
    begin
       if(EOLn(data)) then
       begin
-	 writeln('Print all function');
+	 printAll();
 	 readln(data);
       end
       else
       begin
-	 readln(data, year);
-	 writeln('Print year function');
+      	 readln(data, year);
+	 printYear(year);
       end
          
    end
@@ -74,7 +76,7 @@ begin
     begin
        read(data, age);
        readln(data, address);
-       writeln('Insert');
+       addPerson(firstName, lastName, address, month, day, year, age);
     end
       
     else if(func = 'C')then
@@ -90,25 +92,25 @@ begin
 	  newMonth[2] := ch;
 	  readln(data, ch);
 	  newMonth[3] := ch;
-	  writeln('Change month');
+	  changeMonth(firstName, lastName, month, newMonth, day, year);
         end
        
         else if(changeWhat = 'D') then
 	begin
       	     readln(data, newDay);
-	     writeln('Change day');
+	     changeDay(firstName, lastName, month, day, year, newDay);
          end
        
 	else
 	begin      
 	   read(data, newYear);
-	   writeln('Change year');
+	   changeYear(firstName, lastName, month, day, year, newYear);
 	   readln(data);
 	end
     end
     else
     begin
-       writeln('Delete');
+       delete(firstName, lastName, month, day, year);
        readln(data);
      end
    end; 
